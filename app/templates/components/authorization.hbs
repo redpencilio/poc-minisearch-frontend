@@ -1,0 +1,18 @@
+<div class="authorization__component" ...attributes>
+  <button onclick={{action (mut this.open) (not this.open)}} class="ui primary button" ...attributes>
+    Authorize
+  </button>
+
+  {{#if this.open}}
+    <div class="drop-down ui link list">
+      {{#each this.roles as |role|}}
+        <a
+          {{action this.setActiveRole role}}
+          class={{concat "item " (if role.active "active" "")}}>
+          {{role.name}}
+        </a>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
