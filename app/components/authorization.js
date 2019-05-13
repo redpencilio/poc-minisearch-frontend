@@ -3,6 +3,18 @@ import { tracked } from '@glimmer/tracking';
 import Object, {action, set} from '@ember/object';
 import fetch from 'fetch';
 
+class Role {
+  @tracked name
+  @tracked active
+  @tracked group
+
+  constructor( {name, active, group} ) {
+    this.name = name;
+    this.active = active;
+    this.group = group;
+  }
+}
+
 export default class AuthorizationComponent extends Component {
   @tracked
   open = false
@@ -11,25 +23,26 @@ export default class AuthorizationComponent extends Component {
     super(...arguments);
 
     this.roles = [
-      Object.create({ 
+      new Role({
         name: "Mister mole",
         active: false,
-        group: JSON.stringify([])
+        group: JSON.stringify([ { name: "clean", variables: [] }])
       }),
-      Object.create({ 
+      new Role({
         name: "John Doe",
         active: false,
-        group: JSON.stringify([{ name: "documents", variables: ["human"] }])
+        // "[{\"variables\":[],\"name\":\"public\"},{\"variables\":[\"http://www.openlinksw.com/virtrdf-data-formats#default-iid\"],\"name\":\"read_documents\"},{\"variables\":[\"http://www.openlinksw.com/virtrdf-data-formats#default-iid\"],\"name\":\"write_documents\"},{\"variables\":[],\"name\":\"clean\"}]"
+        group: JSON.stringify([{ name: "read_documents", variables: ["human"] }, { name: "read", variables: [] }, { name: "clean", variables: [] } ])
       }), // <!-- Can see like us -->
-      Object.create({ 
+      new Role({
         name: "SuperMan",
         active: false,
-        group: JSON.stringify([{ name: "documents", variables: ["human"] }, { name: "documents", variables: ["laser"] }])
+        group: JSON.stringify([{ name: "read_documents", variables: ["human"] }, { name: "read_documents", variables: ["laser"] }, { name: "write_documents", variables: ["laser"] }, { name: "read", variables: [] }, { name: "clean", variables: [] }])
       }), // <!-- Can see like us + lazers! -->
-      Object.create({ 
+      new Role({
         name: "Batman",
         active: false,
-        group: JSON.stringify([{ name: "documents", variables: ["human"] }, { name: "documents", variables: ["radar"] }])
+        group: JSON.stringify([{ name: "read_documents", variables: ["human"] }, { name: "read_documents", variables: ["radar"] }, { name: "write_documents", variables: ["radar"] }, { name: "read", variables: [] }, { name: "clean", variables: [] }])
       }) // <!-- Can see with radar -->
     ];
 
@@ -43,8 +56,8 @@ export default class AuthorizationComponent extends Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: role.group
-    } );
+      body: JSON.stringify({body: role.group})
+     } );
 
     this.roles.forEach( (scannedRole) => {
       set( scannedRole, "active", scannedRole == role );
