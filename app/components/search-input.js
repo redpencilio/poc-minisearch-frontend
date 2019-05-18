@@ -5,8 +5,7 @@ export default class SearchInputComponent extends Component {
   @action
   search(event) {
     event.preventDefault();
-
-    if( this.args.onSearch )
+    if( typeof this.args.onSearch === "function" )
       this.args.onSearch( this.value );
     else
       console.log(`No search function: ${this.value}`);
