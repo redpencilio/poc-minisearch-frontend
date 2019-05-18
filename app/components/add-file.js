@@ -28,10 +28,10 @@ export default class AddFileComponent extends Component {
     this.uploadedFile = undefined;
     this.title = undefined;
     this.description = undefined;
+
+    if( typeof this.args.onCreate === 'function' )
+      this.args.onCreate();
   }
-
-
-  uploadErrorData = []
 
   @action
   async uploadFile(file) {

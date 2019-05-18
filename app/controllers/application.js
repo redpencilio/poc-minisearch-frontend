@@ -8,7 +8,7 @@ export default class ApplicationController extends Controller {
   @service search
 
   @action async doSearch( searchString ) {
-    this.search.update( searchString );
+    this.search.execute();
     this.transitionToRoute( 'search' );
   }
 }
