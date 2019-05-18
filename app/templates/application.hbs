@@ -1,8 +1,25 @@
 <div class="hero">
   <div class="extra-content">
-    <Authorization />
+    <Authorization @onAuthorize={{this.executeSearch}} />
   </div>
 
   <h1>Let there be search</h1>
-  <SearchInput search={{this.search}} />
+  <SearchInput @onSearch={{this.search}} />
+</div>
+
+<div class="search-results">
+  We found {{this.searchResult.length}} results.
+
+  <ul>
+    {{#each this.searchResult as |result|}}
+      <li>
+        <h5>{{result.attributes.title}}</h5>
+        <p>{{result.attributes.description}}</p>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
+<div class="footer">
+  <AddFile />
 </div>
