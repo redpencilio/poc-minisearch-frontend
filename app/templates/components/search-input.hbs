@@ -1,6 +1,32 @@
 <div class="ui search">
   <form class="ui icon input" onSubmit={{this.search}}>
-    {{input class="prompt" placeholder="Search documents..." value=this.value}}
+    {{input class="prompt" placeholder="Search title..." value=this.titleSearch}}
     <i class="search icon"></i>
   </form>
+  <form class="ui icon input" onSubmit={{this.search}}>
+    {{input class="prompt" placeholder="Search description..." value=this.descriptionSearch}}
+    <i class="search icon"></i>
+  </form>
+  <form class="ui icon input" onSubmit={{this.search}}>
+    {{input class="prompt" placeholder="Search attachment..." value=this.attachmentSearch}}
+    <i class="search icon"></i>
+  </form>
+
+  {{#ui-dropdown class="selection" selected=this.searchType onChange=(action this.updateSearchType)}}
+    <div class="default text">Search type</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div data-value="term" class="item">term</div>
+      <div data-value="terms" class="item">terms</div>
+      <div data-value="prefix" class="item">prefix</div>
+      <div data-value="wildcard" class="item">wildcard</div>
+      <div data-value="regexp" class="item">regexp</div>
+      <div data-value="fuzzy" class="item">fuzzy</div>
+      <div data-value="fuzzy_phrase" class="item">fuzzy phrase</div>
+      <div data-value="fuzzy_match" class="item">fuzzy terms</div>
+      <div data-value="phrase" class="item">phrase</div>
+      <div data-value="phrase_prefix" class="item">phrase_prefix</div>
+      <div data-value="query" class="item">query</div>
+    </div>
+  {{/ui-dropdown}}
 </div>
