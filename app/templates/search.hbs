@@ -4,10 +4,12 @@
 <div class="search-results">
   We found {{this.search.results.length}} results.
 
-  {{#each this.search.results as |result|}}
-    <div class="ui segment">
-      <h5 class="ui small header">{{result.attributes.title}}</h5>
-      <p>{{result.attributes.description}}</p>
-    </div>
-  {{/each}}
+  {{#animated-container}}
+    {{#animated-each this.search.results key="id" use=this.transition as |result|}}
+      <div class="ui segment">
+        <h5 class="ui small header">{{result.attributes.title}}</h5>
+        <p>{{result.attributes.description}}</p>
+      </div>
+    {{/animated-each}}
+  {{/animated-container}}
 </div>
