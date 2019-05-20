@@ -54,6 +54,16 @@ export default class AuthorizationComponent extends Component {
   }
 
   @action
+  async setActiveRoleByName( roleName ) {
+    for( const role of this.roles ) {
+      if( role.name === roleName ) {
+        await this.setActiveRole( role );
+        return;
+      }
+    }
+  }
+
+  @action
   async setActiveRole( role ) {
     this.roles.forEach( (scannedRole) => {
       scannedRole.active = scannedRole == role;
