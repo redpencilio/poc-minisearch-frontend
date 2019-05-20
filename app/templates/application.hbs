@@ -1,11 +1,14 @@
-<div class="hero">
-  <div class="extra-content">
-    <Authorization @onAuthorize={{action this.doSearch}} />
+<div class="ui main container">
+  <div class="hero">
+    <div class="extra-content">
+      <Authorization @onAuthorize={{action this.doSearch}} />
 
-    {{link-to "Search" "search" class="ui button"}}
-    {{link-to "New document" "documents.new" class="ui button"}}
-    {{link-to "Document overview" "documents.index" class="ui button"}}
-  </div>
+      {{link-to "Search" "search" class="ui button"}}
+      {{link-to "New document" "documents.new" class="ui button"}}
+      {{link-to "Document overview" "documents.index" class="ui button"}}
+    </div>
+  </div>  
+
+  {{outlet}}
 </div>
 
-{{outlet}}
