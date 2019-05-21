@@ -4,7 +4,7 @@ const { Model, attr, belongsTo } = DS;
 export default DS.Model.extend({
   title: DS.attr('string'),
   description: DS.attr('string'),
-  file: DS.belongsTo('file')
+  documentVersions: DS.hasMany('document-version')
 });
 
 // export default class DocumentModel extends Model {

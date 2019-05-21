@@ -2,7 +2,6 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import fetch from 'fetch';
 
 export default class AddFileComponent extends Component {
   @service store
@@ -22,9 +21,15 @@ export default class AddFileComponent extends Component {
 
     const document = this.store.createRecord('document');
     document.setProperties( {
-      title, description, file: uploadedFile
+      title, description
     });
     await document.save();
+
+    const documentVersion = this.store.createRecord('document-version');
+    documentVersion.set('file', uploadedFile);
+    documentVersion.set('document', document);
+    await documentVersion.save();
+
     this.uploadedFile = undefined;
     this.title = undefined;
     this.description = undefined;
