@@ -37,13 +37,18 @@ export default class AuthorizationComponent extends Component {
       new Role({
         name: "SuperMan",
         active: false,
-        group: JSON.stringify([{ name: "read_documents", variables: ["human"] }, { name: "read_documents", variables: ["laser"] }, { name: "write_documents", variables: ["laser"] }, { name: "read", variables: [] }, { name: "clean", variables: [] }])
+        group: JSON.stringify([{ name: "read_documents", variables: ["human"] }, { name: "read_documents", variables: ["superman"] }, { name: "write_documents", variables: ["superman"] }, { name: "read", variables: [] }, { name: "clean", variables: [] }])
       }), // <!-- Can see like us + lazers! -->
       new Role({
         name: "Batman",
         active: false,
-        group: JSON.stringify([{ name: "read_documents", variables: ["human"] }, { name: "read_documents", variables: ["radar"] }, { name: "write_documents", variables: ["radar"] }, { name: "read", variables: [] }, { name: "clean", variables: [] }])
-      }) // <!-- Can see with radar -->
+        group: JSON.stringify([{ name: "read_documents", variables: ["human"] }, { name: "read_documents", variables: ["batman"] }, { name: "write_documents", variables: ["batman"] }, { name: "read", variables: [] }, { name: "clean", variables: [] }])
+      }),
+      new Role({
+        name: "Aquaman",
+        active: false,
+        group: JSON.stringify([{ name: "read_documents", variables: ["human"] }, { name: "read_documents", variables: ["aquaman"] }, { name: "write_documents", variables: ["aquaman"] }, { name: "read", variables: [] }, { name: "clean", variables: [] }])
+      })// <!-- Can see the water  -->
     ];
 
     this.setActiveRole(this.roles[1]);
