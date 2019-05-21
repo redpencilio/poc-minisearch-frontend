@@ -5,7 +5,8 @@ export default DS.Model.extend({
   versionNumber: DS.attr('string'),
   chosenFileName: DS.attr('string'),
   document: DS.belongsTo('document'),
-  file: DS.belongsTo('file')
+  file: DS.belongsTo('file'),
+  convertedFile: DS.belongsTo('file')
 });
 
 // export default class DocumentVersionModel extends Model {
