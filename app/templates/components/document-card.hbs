@@ -1,12 +1,16 @@
 <div class="ui segment">
   <h4 class="ui small header">{{@title}}</h4>
   <p>{{@description}}</p>
+  <button onclick={{action this.togglePreview}} class="ui button">
+    {{#if this.showPreview}}Hide preview{{else}}Show preview{{/if}}
+  </button>
   {{#if @documentVersion}}
-    <!-- {{kaleidos-viewer documentVersion=@documentVersion}} -->
-    {{#if @documentVersion.convertedFile}}
-      {{{htmlSnippet}}}
-    {{else}}
-      {{pdf-view filePath=(concat "/files/" @documentVersion.file.id "/download")}}
+    {{#if this.showPreview}}
+      {{#if @documentVersion.convertedFile}}
+        {{{this.htmlSnippet}}}
+      {{else}}
+        {{pdf-view filePath=(concat "/files/" @documentVersion.file.id "/download")}}
+      {{/if}}
     {{/if}}
   {{else}}
     No document version te preview
