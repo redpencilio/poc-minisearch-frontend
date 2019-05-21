@@ -2,7 +2,8 @@
   <h4 class="ui small header">{{@title}}</h4>
   <p>{{@description}}</p>
   {{#if @documentVersion}}
-    {{kaleidos-viewer documentVersion=@documentVersion}}
+    <!-- {{kaleidos-viewer documentVersion=@documentVersion}} -->
+    {{pdf-view filePath=(concat "/files/" @documentVersion.file.id "/download")}}
   {{else}}
     No document version te preview
   {{/if}}
