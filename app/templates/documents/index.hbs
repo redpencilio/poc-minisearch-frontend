@@ -2,5 +2,6 @@
   <div class="ui segment">
     <h4 class="ui small header">{{document.title}}</h4>
     <p>{{document.description}}</p>
+    {{kaleidos-viewer documentVersion=document.documentVersions.[0]}}
   </div>
 {{/each}}
