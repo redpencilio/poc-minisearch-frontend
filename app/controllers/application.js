@@ -6,6 +6,7 @@ import Controller from '@ember/controller';
 
 export default class ApplicationController extends Controller {
   @service search
+  @service authorization;
 
   @action async doSearch( searchString ) {
     this.search.execute();

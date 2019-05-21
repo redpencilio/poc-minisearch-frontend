@@ -1,5 +1,13 @@
 <div class="ui main container">
-  <h1 class="ui main header">Kaleidos Search</h1>
+  <h1 class="ui main header face-background">
+    <div class="faces">
+      {{#each this.authorization.roles as |role|}}
+        <img class={{concat (if role.active "selected" "unselected")}} alt={{concat "face of " role.name}} src={{role.image}} />
+      {{/each}}
+    </div>
+
+    <h1 class="ui inverted main header">Kaleidos Search</h1>
+  </h1>
 
   <div class="hero">
     <div class="extra-content">
