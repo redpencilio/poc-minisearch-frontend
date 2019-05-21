@@ -1,0 +1,9 @@
+<div class="ui segment">
+  <h4 class="ui small header">{{@title}}</h4>
+  <p>{{@description}}</p>
+  {{#if @documentVersion}}
+    {{kaleidos-viewer documentVersion=@documentVersion}}
+  {{else}}
+    No document version te preview
+  {{/if}}
+</div>

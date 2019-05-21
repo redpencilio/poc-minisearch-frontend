@@ -1,7 +1,3 @@
 {{#each this.model as |document|}}
-  <div class="ui segment">
-    <h4 class="ui small header">{{document.title}}</h4>
-    <p>{{document.description}}</p>
-    {{kaleidos-viewer documentVersion=document.documentVersions.[0]}}
-  </div>
+  <DocumentCard @title={{document.title}} @description={{document.description}} @documentVersion={{document.documentVersions.firstObject}} />
 {{/each}}
