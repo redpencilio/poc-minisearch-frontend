@@ -2,7 +2,7 @@
 <SearchInput @onSearch={{this.search.update}} />
 
 <div class="search-results">
-  We found {{this.search.results.length}} results.
+  We found {{this.search.resultCount}} results.
 
   {{#animated-container}}
     {{#animated-each this.search.results key="id" use=this.transition as |result|}}

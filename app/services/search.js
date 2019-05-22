@@ -13,6 +13,8 @@ function asyncFetch( ...args ) {
 export default class SearchService extends Service {
   @tracked
   results = []
+  @tracked
+  resultCount
 
   @tracked
   lastSearch = new Search()
@@ -36,6 +38,7 @@ export default class SearchService extends Service {
       const json = await response.json();
       this.lastSearch = search;
       this.results = json.data;
+      this.resultCount = json.count;
     } else {
       this.results = [];
     }    
