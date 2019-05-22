@@ -1,0 +1,94 @@
+@font-face {
+    font-family: "flanders-sans-regular";
+    src: url("flanders-sans-regular.woff2") format('woff2');
+         /* url("https://www.vlaanderen.be/fonts/flanders/flanders-sans-regular.woff") format('woff'); */
+}
+
+@font-face {
+    font-family: "flanders-sans-medium";
+    src: url("flanders-sans-medium.woff2") format('woff2');
+         /* url("https://www.vlaanderen.be/fonts/flanders/flanders-sans-medium.woff") format('woff'); */
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "flanders-sans-bold";
+    src: url("flanders-sans-bold.woff2") format('woff2');
+         /* url("https://www.vlaanderen.be/fonts/flanders/flanders-sans-medium.woff") format('woff'); */
+    font-weight: bolder;
+}
+
+
+
+.vr-logo-wrapper img {
+  width: 200%;
+  left: -50%;
+  position: relative;
+  transform: translateY(-36%);
+}
+
+.document {
+  font-family: "flanders-sans-regular";
+  font-size: 11pt;
+  padding-left: 20mm;
+  padding-right: 25mm;
+  padding-top: 15mm;
+  padding-bottom: 12.5mm;
+  max-width: 210mm;
+  margin: 0 auto;
+  box-sizing: border-box;
+  box-shadow: 1px 4px 5px 10px rgba(0,0,0,0.25);
+  background-color: rgba(247,247,247,1);
+}
+
+
+
+.document.nota {
+  header {
+    .vr-logo-wrapper {
+      width: 1.71in;
+      height: 0.79in;
+    }
+    .minister-titles * {
+      text-transform: uppercase;
+    }
+    .minister-titles {
+       list-style-type: none;
+       padding: 0;
+    }
+
+    .concerns {
+      display: inline-flex;
+      font-family: "flanders-sans-medium";
+      font-size: 14pt;
+      :before {
+        content: 'Betreft:';
+      }
+      .subjects {
+        list-style-type: none;
+        margin-top: -0.1em;
+        margin-left: 1em;
+        padding: 0;
+        li:before{
+         content:"-";
+        }
+        li > * {
+         padding-left: 0.3em;
+        }
+      }
+      .title {
+        font-family: "flanders-sans-medium";
+        font-size: 14pt;
+        text-align: center;
+        padding-top: 1em;
+        padding-bottom: 1.5em;
+      }
+    } 
+  }
+}
+
+
+
+.dossiernummer {
+  text-decoration: underline;
+}
