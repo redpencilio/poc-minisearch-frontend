@@ -1,17 +1,19 @@
-<div class="ui segment">
+<div class="ui segment document-card">
   <h4 class="ui small header">{{@title}}</h4>
   <p>{{@description}}</p>
   <button onclick={{action this.togglePreview}} class="ui button">
     {{#if this.showPreview}}Hide preview{{else}}Show preview{{/if}}
   </button>
   {{#if @documentVersion}}
-    {{#if this.showPreview}}
-      {{#if @documentVersion.convertedFile}}
-        {{{this.htmlSnippet}}}
-      {{else}}
-        {{pdf-view filePath=(concat "/files/" @documentVersion.file.id "/download")}}
+    {{#animated-container}}
+      {{#if this.showPreview}}
+        {{#if @documentVersion.convertedFile}}
+          {{{this.htmlSnippet}}}
+        {{else}}
+          {{pdf-view filePath=(concat "/files/" @documentVersion.file.id "/download")}}
+        {{/if}}
       {{/if}}
-    {{/if}}
+    {{/animated-container}}
   {{else}}
     No document version te preview
   {{/if}}

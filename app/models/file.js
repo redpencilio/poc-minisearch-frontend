@@ -6,7 +6,7 @@ export default DS.Model.extend({
   format: DS.attr(),
   size: DS.attr(),
   extension: DS.attr(),
-  created: DS.attr('datetime')
+  // created: DS.attr('datetime')
 });
 
 // export default class FileModel extends Model {

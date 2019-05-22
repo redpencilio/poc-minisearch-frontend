@@ -1,3 +1,4 @@
+import { get } from '@ember/object';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
@@ -26,12 +27,14 @@ export default class DocumentCardComponent extends Component {
 
   @action
   async execute() {
-    if( this.htmlSnippet != '' ) {
+    if( this.htmlSnippet == '' ) {
       if( this.args.documentVersion && this.args.documentVersion.convertedFile )
       {
         console.log(`Fetching converted file`);
-        const url = new URL(`/files/${this.args.documentVersion.convertedFile.id}/download`, window.location.href);
-        this.htmlSnippet = await asyncFetch( url );
+        const url = new URL(`/files/${get(this,'args.documentVersion.convertedFile.id')}/download`, window.location.href);
+        fetch( url ).then( (response) => {
+          response.text().then( (txt) => this.htmlSnippet = txt );
+        });
       } else {
         this.htmlSnippet = '';
       }
